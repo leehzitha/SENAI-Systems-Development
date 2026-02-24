@@ -23,13 +23,11 @@ router
             res.status(400).send("Name, email and ID are required.");
             return;
         }
-        let checkEmail = users.find((user) => user.email == email)
+
+        let checkEmail = verifyEmail(email, res);
         let checkID = users.find((user) => user.id == id)
 
-        if (checkEmail) {
-            res.status(400).send("Email already in use!");
-            return;
-        }
+        if (!checkEmail) return;
 
         if (checkID) {
             res.status(400).send("ID already in use!");
@@ -119,6 +117,17 @@ function findUserById(id: string, res: Response): User | null {
         return find;
     }
     res.status(404).send("User not found!");
+    return null;
+}
+
+function verifyEmail(email: string, res: Response): User | null {
+    const find = users.find(user => user.email == email);
+
+    if (find) {
+        res.status(400).send("Email already in use!");
+        return find;
+    }
+
     return null;
 }
 export default router;
