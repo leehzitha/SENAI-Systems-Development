@@ -1,5 +1,6 @@
 import express, { Request, response, Response, Router } from 'express';
 import routes from './routes.ts';
+import Userr from '../models/user.ts';
 
 
 interface User {
@@ -15,8 +16,8 @@ const router: Router = express.Router();
 const users : User[] = []; 
 
 router
-    .post('/usuarios', (req: Request, res: Response) => {
-        const {id, name, email, active = true, type, createdAt} = req.body; // All users start as active (true)
+    .post('/usuarios', async (req: Request, res: Response) => {
+        const { id, name, email, role } = req.body; // All users start as active (true)
 
         // data validation
         if (!email || !name || !id) {
@@ -24,19 +25,32 @@ router
             return;
         }
 
-        let checkEmail = verifyEmail(email, res);
-        let checkID = users.find((user) => user.id == id)
+        // let checkEmail = verifyEmail(email, res);
+        // let checkID = users.find((user) => user.id == id)
 
-        if (!checkEmail) return;
+        // if (!checkEmail) return;
 
-        if (checkID) {
-            res.status(400).send("ID already in use!");
-            return;
+        // if (checkID) {
+        //     res.status(400).send("ID already in use!");
+        //     return;
+        // }
+
+        try {
+            const user = new Userr({
+                id : Number(id), 
+                name,
+                email,
+                role,
+                active: true,
+                createdAt: new Date()
+            });
+    
+            await user.save();
+            res.status(201).send({response: `${role} ${name} cadastrado com sucesso!`})
+        
+        } catch (error) {
+            res.status(400).json({ message: 'Error while creating person.', error});
         }
-
-        users.push({id, name, email, type, active, createdAt})
-        res.status(201).send({response: `${type} ${name} cadastrado com sucesso!`})
-
     })
 
     .get('/usuarios', (req: Request, res: Response) => {
