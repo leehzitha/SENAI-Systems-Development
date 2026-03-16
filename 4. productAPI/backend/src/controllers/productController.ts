@@ -20,7 +20,7 @@ class ProductController {
         
             if (inStock === "true") filters.stock = { $gt: 0 };
             
-            const products = await Product.find(filters);
+            const products = await Product.find(filters).select('-__v');
             return res.status(200).send({ response: products })
         
         } catch (error) {
@@ -33,7 +33,7 @@ class ProductController {
 
         const product = await Product.findById(id);
         
-        if(!product) res.status(400).send("Product not found!");
+        if(!product) res.status(400).send("Product not found!").select('-__v');
         
         res.status(200).send({ response: product});
     }
@@ -41,12 +41,13 @@ class ProductController {
     static async create (req: Request, res: Response) {
         const { name, description, price, stock, category } = req.body;
 
+        
         try {
             const product = new Product({
                 name,
                 description,
-                price: Number(price),
-                stock: Number(stock), 
+                price: price,
+                stock: stock, 
                 category
             });
 
