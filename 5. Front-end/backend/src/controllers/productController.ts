@@ -31,9 +31,9 @@ class ProductController {
     static async findById ( req: Request, res: Response) {
         const { id } = req.params;
 
-        const product = await Product.findById(id);
+        const product = await Product.findById(id).select('-__v');
         
-        if(!product) res.status(400).send("Product not found!").select('-__v');
+        if(!product) res.status(400).send("Product not found!");
         
         res.status(200).send({ response: product});
     }

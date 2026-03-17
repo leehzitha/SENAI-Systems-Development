@@ -1,0 +1,85 @@
+.Screen {
+    display: flex ;
+    flex-direction: column;
+    background-color: 'white';
+    padding: '100px';
+    align-items: 'center' 
+}
+
+.titleButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-family: monospace;
+    font-size: 30px;
+    color: gray;
+    font-weight: bolder
+}
+
+.button {
+    background-color: #bebfc4;
+    color: white;
+    height: '60px'
+}
+
+.addProduct {
+    padding: 15px 25px
+}
+
+.products {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 15px
+}
+
+.product {
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    gap: 100px;
+    border-radius: 20px;
+    border: 2px solid  #bebfc4
+
+}
+
+.productData {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; 
+    gap: 3px
+}
+
+.productName {
+    margin: 0px;
+    color: gray;
+    font-weight: bolder;
+    font-family: monospace;
+    font-size: 18px;
+}
+
+.productPrice {
+    margin: 0px;
+    color: gray;
+    font-weight: bolder;
+    font-family: monospace;
+    font-size: 16px
+}
+
+.productStock {
+    margin: 0px;
+    color: gray;
+    font-family: monospace;
+    font-size: 13px
+}
+
+p {
+    font-family: monospace;
+}
