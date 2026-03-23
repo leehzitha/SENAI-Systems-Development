@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
-import { Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 function App() {
 
@@ -43,21 +43,22 @@ function App() {
 
   return (
     <Routes>
-      <div className="Screen">
-        <div className="titleButton">
-          <p className="title">Products</p>
-          <button 
-            className='button addProduct'
-            onClick={() => navigate("/AddProduct")}> Add product</button>
-        </div>
+      <Route path="/" element={(
+        <div className="Screen">
+          <div className="titleButton">
+            <p className="title">Products</p>
+            <button
+              className="button addProduct"
+              onClick={() => navigate("/AddProduct")}> Add product</button>
+          </div>
 
-        <div className="products">
-          {products.map((product: any) => (
+          <div className="products">
+            {products.map((product: any) => (
               <div className="product" key={product._id}>
-                <div className='productData'>
-                  <p className='productName'>{product.name}</p>
-                  <p className='productPrice'>R$ {product.price}</p>
-                  <p className='productStock'>Disponível: {product.stock}</p>
+                <div className="productData">
+                  <p className="productName">{product.name}</p>
+                  <p className="productPrice">R$ {product.price}</p>
+                  <p className="productStock">Disponível: {product.stock}</p>
                 </div>
 
                 <div style={{
@@ -68,22 +69,22 @@ function App() {
                 }}>
                   <button
                     onClick={() => updateProduct(product._id, product.stock)}
-                    style={{ backgroundColor: ' #bebfc4', color: 'white', cursor: 'pointer', height: '30%'}}
-                  > Update 
+                    style={{ backgroundColor: ' #bebfc4', color: 'white', cursor: 'pointer', height: '30%' }}
+                  > Update
                   </button>
 
                   <button
                     onClick={() => deleteProduct(product._id)}
-                    style={{ backgroundColor: ' #f0795b', color: 'white', cursor: 'pointer', height: '30%'}}
+                    style={{ backgroundColor: ' #f0795b', color: 'white', cursor: 'pointer', height: '30%' }}
                   > Delete
                   </button>
                 </div>
-                
+
               </div>
-        ))}
-        
+            ))}
+          </div>
         </div>
-      </div>
+      )} />
     </Routes>
   )
 }
