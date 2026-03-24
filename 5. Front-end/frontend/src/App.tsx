@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import Register from "./Pages/Register/Register.tsx";
+import Login from './Pages/Login/Login.tsx';
 
 function App() {
 
@@ -85,6 +87,8 @@ function App() {
           </div>
         </div>
       )} />
+      <Route path="/register" element={<Register/>}/>
+      <Route path="/login" element={<Login/>}/>
     </Routes>
   )
 }
