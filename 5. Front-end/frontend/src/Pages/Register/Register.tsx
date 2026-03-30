@@ -1,52 +1,32 @@
 import React, { useState } from "react";
 import "./Register.css";
-
-interface FormData {
-  email: string;
-  password: string;
-  name: string
-}
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export default function Register() {
-  const [form, setForm] = useState<FormData>({
-    email: "",
-    password: "",
-    name: ""
-  });
 
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPass] = useState("")
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleRegister = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setMessage(data.message);
-        setForm({ email: "", password: "", name: ""});
-      } else {
-        setMessage(data.message || "Erro ao registrar");
-      }
-    } catch (error) {
-      setMessage("Erro de conexão com o servidor");
+      await axios.post('http://localhost:8080/api/auth/register', {name, email, password})
+      Swal.fire({
+        title: "Good job!",
+        text: "User registered!",
+        icon: "success"
+      })
+    } catch {
+      Swal.fire({
+        title: "Error",
+        text: "Error while creating user",
+        icon: "error"
+      })
     }
-  };
+  }
+
+
 
   return (
     <div className="container">
@@ -54,32 +34,28 @@ export default function Register() {
         <div className="title">
           <p id="title">Register</p>
         </div>
-        <form onSubmit={handleSubmit} className="form">
+        <div className="form">
           <input
             type="text"
             name="email"
             placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
+            onChange={(e) => setName(e.target.value)}
           />
           <input
             type="password"
             name="password"
             placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <input
             type="text"
             name="name"
             placeholder="Name"
-            value={form.name}
-            onChange={handleChange}
+            onChange={(e) => setPass(e.target.value)}
           />
-          <button type="submit">Register</button>
-        {message && <p>{message}</p>}
-        </form>
+          <button type="submit" onClick={handleRegister}>Register</button>
+        </div>
       </div>
     </div>
   );
