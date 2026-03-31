@@ -29,21 +29,23 @@ export default function Register() {
 
 
   return (
-    <div className="container">
-      <div className="forms">
-        <div className="title">
-          <p id="title">Register</p>
+    <div className="w-screen h-screen gap-10 bg-linear-to-t from-bg-primary via-bg-secondary from-10% via-30% to-60% to-bg-terciary flex-col flex justify-center items-center">
+      <div className="bg-white p-10 w-230 flex flex-row rounded-2xl justify-between">
+        <div className="flex flex-col h-full items-center justify-center">
+          <p className="text-6xl font-bold font-sans">REGISTER</p>
         </div>
-        <div className="form">
+        <div className="flex flex-col">
           <input
             type="text"
             name="email"
             placeholder="Email"
+            className=" border-0 tracking-widest border-b-gray-200 border-b-2 focus:border-bg-primary focus:outline-none p-4 pl-0 transition"
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type="password"
             name="password"
+            className=" border-0 tracking-widest border-b-gray-200 border-b-2 focus:border-bg-primary focus:outline-none w-100 p-4 pl-0 transition"
             placeholder="Password"
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -51,10 +53,14 @@ export default function Register() {
           <input
             type="text"
             name="name"
+            className=" border-0 tracking-widest border-b-gray-200 border-b-2 focus:border-bg-primary focus:outline-none p-4 pl-0 transition"
             placeholder="Name"
             onChange={(e) => setPass(e.target.value)}
           />
-          <button type="submit" onClick={handleRegister}>Register</button>
+          <button 
+            type="submit"
+            onClick={handleRegister}
+            className="bg-bg-primary mt-5">Register</button>
         </div>
       </div>
     </div>
