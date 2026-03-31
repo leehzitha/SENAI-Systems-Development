@@ -1,12 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-bg-primary: #FFDBCE;
   --color-bg-secondary: #FFDBCE;
-  --color-bg-terciary: #FFEDE7;
+  --color-bg-terciary: black;
   --color-font: #78574A;
+  --color-input: #303032;
   --color-accent: #22c55e;
   --color-number: #FFEDE7;
+  --color-title: #8F9095;
+  --color-button: #E2E2E7;
   --font-sans: "Space Grotesk", sans-serif
 }
