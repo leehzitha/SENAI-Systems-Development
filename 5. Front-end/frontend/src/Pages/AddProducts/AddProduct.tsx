@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import './AddProduct.css'
 
 export default function AddProduct() {
+    const [name, setName] = useState("");
+    
     return (
         <>
             <div className="w-screen h-screen gap-10 bg-linear-to-t from-bg-primary via-bg-secondary from-10% via-30% to-60% to-bg-terciary flex-col flex justify-center items-center">

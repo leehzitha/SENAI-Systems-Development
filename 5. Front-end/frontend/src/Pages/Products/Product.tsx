@@ -1,16 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import './Product.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function products() {
     const [products, setProducts] = useState <any>([]);
+    const id = useParams();
 
     const navigate = useNavigate();
     
     const fetchData = async () => {
         const res = await axios.get("http://localhost:8080/api/products");
-        setProducts(res.data.response);
+        setProducts(res.    data.response);
     };
 
     const updateProduct = async (id: string, stock: number) => {
@@ -27,15 +28,16 @@ export default function products() {
         }
     }
 
-    const deleteProduct = async (id: string) => {
+    const deleteProduct = async (_id: string) => {
         try {
-        await axios.delete(`http://localhost:8080/api/products/${id}`);
-        setProducts(products.filter((product: any) => product.id !== id));
-        alert("Product succesfully deleted!");
+            await axios.delete(`http://localhost:8080/api/products/delete/${_id}`);
+            setProducts(products.filter((product: any) => product.id !== _id));
+            alert("Product succesfully deleted!");
         } catch (error){
         console.error("Delete error: ", error);
         }
     }
+
     
     useEffect(() => {
         fetchData();
