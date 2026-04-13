@@ -46,7 +46,7 @@ class ProductController {
             const product = new Product({
                 name,
                 description,
-                price: price,
+                price: Number(price.replace(',', '.')),
                 stock: stock, 
                 category
             });
@@ -94,6 +94,8 @@ class ProductController {
         }
 
     }
+
+    static async delete (req: Request, res: Response){}
    
 }
 

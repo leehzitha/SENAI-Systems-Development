@@ -49,9 +49,20 @@ export const Login = () => {
                     items-center">
 
                     <p className="font-sans text-white font-bold text-5xl mb-5">Login</p>
-                    <input type="text" placeholder="Email" className="p-2.5 rounded-b-md text-title font-sans tracking-widest w-100 bg-input border-0  border-gray-200 focus:border-bg-primary focus:outline-none transition"/>
-                    <input type="text" placeholder="Password" className="p-2.5 rounded-b-md text-title font-sans tracking-widest w-100 bg-input border-0  border-gray-200 focus:border-bg-primary focus:outline-none transition" />
-                    <button className="bg-button w-full mt-6 px-6 py-2 rounded-lg outline-none focus:outline-none active:scale-98 transition">Login</button>
+                    <input 
+                        type="text"
+                        placeholder="Email"
+                        className="p-2.5 rounded-b-md text-title font-sans tracking-widest w-100 bg-input border-0  border-gray-200 focus:border-bg-primary focus:outline-none transition"
+                        onChange={(e) => setEmail(e.target.value)}/>
+                    
+                    <input
+                        type="text"
+                        placeholder="Password"
+                        className="p-2.5 rounded-b-md text-title font-sans tracking-widest w-100 bg-input border-0  border-gray-200 focus:border-bg-primary focus:outline-none transition"
+                        onChange={(e) => setPass(e.target.value)}/>
+                    <button 
+                        className="bg-button w-full mt-6 px-6 py-2 rounded-lg outline-none focus:outline-none active:scale-98 transition"
+                        onClick={handleLogin}>Login</button>
                 </div>
             </div>
         </>

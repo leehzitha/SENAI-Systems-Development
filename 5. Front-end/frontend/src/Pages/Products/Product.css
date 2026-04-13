@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+/* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -34,7 +34,7 @@ body {
   align-items: center;
   justify-content: center;
   /* background-image: url('fundo.jpg');
-  background-size: cover; */
+  background-size: cover; 
 }
 
 h1 {
@@ -66,4 +66,4 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-}
+} */
