@@ -52,7 +52,18 @@ export const Login = () => {
                     <input 
                         type="text"
                         placeholder="Email"
-                        className="p-2.5 rounded-b-md text-title font-sans tracking-widest w-100 bg-input border-0  border-gray-200 focus:border-bg-primary focus:outline-none transition"
+                        className="
+                            p-2.5
+                            rounded-b-md
+                            text-title
+                            font-sans
+                            tracking-widest
+                            w-100
+                            bg-input border-0
+                            border-gray-200
+                            focus:border-bg-primary
+                            focus:outline-none
+                            transition"
                         onChange={(e) => setEmail(e.target.value)}/>
                     
                     <input
